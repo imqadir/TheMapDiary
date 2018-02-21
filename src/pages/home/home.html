@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color='grey'>
     <ion-title>
-      Ionic Blank
+      Geocoding Service
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding style='background-color: #CFCFCF;'>
+  <h4>Please enter an address in the field below to find latitude and longitude of the provided location.</h4>
+  <ion-item >
+    <ion-input [(ngModel)]='address' type='text' placeholder='Enter address'></ion-input>
+  </ion-item>
+
+  <button ion-button color='grey' style='margin-bottom=5%'
+  (click)='geocodeAddress()' > Geocode Address </button>
+
+  <p style='text-align:center;'>The app makes an Http request to Google and gets the required values.</p>
+  <p style='text-align:center;'>Http Request Status: {{status}}</p>
+
+  <h5>Latitude value: {{latitude}}</h5>
+  <h5>Longitude value: {{longitude}}</h5>
+
+
+  <button ion-button color='grey' navPush='MapAndMarkerPage'>Mark Address on Map</button>
+  <button ion-button color='grey'>Find your devices locations</button>
+  
 </ion-content>
