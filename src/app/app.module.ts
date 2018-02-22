@@ -4,9 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { PositionServiceProvider } from '../providers/position-service/position-service';
+import { GeolocationServiceProvider } from '../providers/geolocation-service/geolocation-service';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,11 @@ import { PositionServiceProvider } from '../providers/position-service/position-
   ],
   providers: [
     StatusBar,
+    Geolocation,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PositionServiceProvider
+    PositionServiceProvider,
+    GeolocationServiceProvider
   ]
 })
 export class AppModule {}
