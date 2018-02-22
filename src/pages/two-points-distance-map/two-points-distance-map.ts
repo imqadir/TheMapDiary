@@ -1,10 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Position } from './../../position';
 import { PositionServiceProvider } from './../../providers/position-service/position-service';
+import { Position } from './../../position';
 
 /**
- * Generated class for the MapAndMarkerPage page.
+ * Generated class for the TwoPointsDistanceMapPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,38 +12,39 @@ import { PositionServiceProvider } from './../../providers/position-service/posi
 
 declare var google;
 
-
 @IonicPage()
 @Component({
-  selector: 'page-map-and-marker',
-  templateUrl: 'map-and-marker.html',
+  selector: 'page-two-points-distance-map',
+  templateUrl: 'two-points-distance-map.html',
 })
-export class MapAndMarkerPage {
+export class TwoPointsDistanceMapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  pos: Position;
+  positionsArr: Position[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public positionService: PositionServiceProvider) {
-    this.pos = this.positionService.returnPosition();
+    this.positionsArr = this.positionService.returnPositionArray();
   }
 
   ionViewDidLoad() {
     this.loadMap();
-    this.placeMarker();
+    this.placeMarkers();
   }
 
   loadMap(){
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 7,
-      center: this.pos,
-    });
-  }
-  placeMarker(){
-    new google.maps.Marker({
-      position: this.pos,
-      map: this.map
+      center: this.positionsArr[0],
     });
   }
 
+  placeMarkers(){
+    for(var i=0; i<this.positionsArr.length; i++){
+      new google.maps.Marker({
+        position: this.positionsArr[i],
+        map: this.map
+      });
+    }
+  }
 }

@@ -13,6 +13,7 @@ import { Position } from './../../position';
 export class PositionServiceProvider {
 
   pos: Position;
+  arrPos: Position[] = [];
 
   constructor(public http: HttpClient) {
   }
@@ -22,6 +23,12 @@ export class PositionServiceProvider {
   }
   returnPosition(){
     return this.pos;
+  }
+  catchPositionArray(arr: Position[]){
+    this.arrPos = arr;
+  }
+  returnPositionArray(){
+    return this.arrPos;
   }
 
 

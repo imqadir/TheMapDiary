@@ -17,7 +17,6 @@ export class HomePage {
   latitude: number = 0;
   longitude: number = 0;
   status: string = '';
-  //addressPos: Position;
   returnedPos:Position;
 
   constructor(public navCtrl: NavController, private httpClient: HttpClient,
