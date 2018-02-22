@@ -1,0 +1,34 @@
+<!--
+  Generated template for the SavingOptionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='grey'>
+    <ion-title>Save the Navigation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style='background-color:#CFCFCF;'>
+
+<h4 style='text-align:center;'>These pages can be used to save information and a picture about any location that user navigates. </h4>
+
+<h4 style='text-align:center;'>To attach the information with a certain address fill in the fields below <strong> OR </strong>click "Show Map" button to select a location from the map. </h4>
+
+<ion-item >
+  <ion-input [(ngModel)]='entAddress' type='text' placeholder='Enter address'></ion-input>
+</ion-item>
+
+<ion-item >
+  <ion-input [(ngModel)]='entDetail' type='text' placeholder='Enter Information'></ion-input>
+</ion-item>
+
+<button ion-button color='grey' (click)='addToDatabase()'>Add Info</button>
+<p></p>
+<button ion-button block color='grey' navPush='DatalistPage'>Show List</button>
+
+</ion-content>
