@@ -20,8 +20,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class SavingOptionsPage {
 
-  shoppingItems: FirebaseListObservable<any[]>;
-
   apiKey:string = 'AIzaSyA3s9I9UoqZUT6-Q2pJ-hBnvYVhpoDYJdY';
   entAddress: string = '';
   entDetail: string = '';
