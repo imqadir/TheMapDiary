@@ -8,6 +8,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { Camera } from '@ionic-native/camera';
 
 
 import { MyApp } from './app.component';
@@ -34,7 +35,7 @@ var firebaseConfig = {
     HttpClientModule,
     HttpModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(firebaseConfig),   
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +48,8 @@ var firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PositionServiceProvider,
     GeolocationServiceProvider,
-    FirebaseServiceProvider
+    FirebaseServiceProvider, 
+    Camera
   ]
 })
 export class AppModule {}

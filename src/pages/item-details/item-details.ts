@@ -21,6 +21,7 @@ export class ItemDetailsPage {
   longitude: number = 0;
   info: string = '';
   item: any;
+  pic: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public firebaseService: FirebaseServiceProvider) {
@@ -32,6 +33,8 @@ export class ItemDetailsPage {
     this.latitude = this.item.lat;
     this.longitude = this.item.lng;
     this.info = this.item.detail;
+    this.pic = this.item.picture;
+
   }
 
 }

@@ -4,6 +4,7 @@ import { FirebaseServiceProvider } from './../../providers/firebase-service/fire
 import { FirebaseListObservable } from 'angularfire2/database';
 import { DatabaseEntry } from './../../database-entry';
 import { HttpClient } from '@angular/common/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the SavingOptionsPage page.
@@ -27,11 +28,33 @@ export class SavingOptionsPage {
   latitude: number;
   longitude: number;
   dataItem: DatabaseEntry;
+  result: any;
+  image: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, private httpClient: HttpClient) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, private httpClient: HttpClient, private camera: Camera) {}
 
   ionViewDidLoad() {}
+
+  async takePicture(){
+    try{
+      const options: CameraOptions = {
+        quality: 50,
+        targetHeight: 600,
+        targetWidth: 600,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE
+      }
+
+      this.result = await this.camera.getPicture(options);
+      this.image = `data:image/jpeg;base64,${this.result}`;
+    }
+    catch(e){
+      console.log(e);
+    }
+
+  }
 
   addToDatabase(){
     this.httpClient.get('https://maps.googleapis.com/maps/api/geocode/json?address='+ this.entAddress + '&key=' + this.apiKey)
@@ -39,7 +62,7 @@ export class SavingOptionsPage {
     this.latitude = data.results[0].geometry.location.lat;
     this.longitude = data.results[0].geometry.location.lng;
     this.dataItem = {address: this.entAddress,
-      lat: this.latitude, lng:this.longitude, detail: this.entDetail};
+      lat: this.latitude, lng:this.longitude, detail: this.entDetail, picture: this.image};
     this.firebaseService.addDataItem(this.dataItem);
     });
   }

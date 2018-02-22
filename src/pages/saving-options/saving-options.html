@@ -17,7 +17,7 @@
 
 <h4 style='text-align:center;'>These pages can be used to save information and a picture about any location that user navigates. </h4>
 
-<h4 style='text-align:center;'>To attach the information with a certain address fill in the fields below <strong> OR </strong>click "Show Map" button to select a location from the map. </h4>
+<h4 style='text-align:center;'>To attach the information with a certain address fill in the fields below. </h4>
 
 <ion-item >
   <ion-input [(ngModel)]='entAddress' type='text' placeholder='Enter address'></ion-input>
@@ -28,6 +28,7 @@
 </ion-item>
 
 <button ion-button color='grey' (click)='addToDatabase()'>Add Info</button>
+<button ion-button color='grey' (click)='takePicture()'>Take Picture</button>
 <p></p>
 <button ion-button block color='grey' navPush='DatalistPage'>Show List</button>
 
