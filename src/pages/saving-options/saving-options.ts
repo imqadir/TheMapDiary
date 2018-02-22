@@ -5,6 +5,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 import { DatabaseEntry } from './../../database-entry';
 import { HttpClient } from '@angular/common/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Position } from './../../position';
 
 /**
  * Generated class for the SavingOptionsPage page.
@@ -28,6 +29,7 @@ export class SavingOptionsPage {
   dataItem: DatabaseEntry;
   result: any;
   image: any;
+  pos: Position;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FirebaseServiceProvider, private httpClient: HttpClient, private camera: Camera) {}
@@ -61,7 +63,9 @@ export class SavingOptionsPage {
     this.longitude = data.results[0].geometry.location.lng;
     this.dataItem = {address: this.entAddress,
       lat: this.latitude, lng:this.longitude, detail: this.entDetail, picture: this.image};
+    this.pos = {lat:this.latitude, lng:this.longitude};
     this.firebaseService.addDataItem(this.dataItem);
+    this.firebaseService.mkFirePosArray(this.pos);
     });
   }
 }
