@@ -95,5 +95,6 @@ export class TwopointsdirectionPage {
       this.distanceString = response.rows[0].elements[0].distance.text;
     });
   }
+  
 
 }

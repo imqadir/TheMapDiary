@@ -34,7 +34,7 @@ export class TwoPointsDistanceMapPage {
 
   loadMap(){
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 7,
+      zoom: 12,
       center: this.positionsArr[0],
     });
   }
