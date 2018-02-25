@@ -38,6 +38,7 @@ export class FirebaseServiceProvider {
     return this.item;
   }
 
+/*
   mkFirePosArray(pos: Position){
     this.posArray.push(pos);
   }
@@ -45,4 +46,5 @@ export class FirebaseServiceProvider {
   returnFirePosArray(){
     return this.posArray;
   }
+  */
 }

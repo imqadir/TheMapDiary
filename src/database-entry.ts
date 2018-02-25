@@ -3,5 +3,5 @@ export class DatabaseEntry{
   lat: number;
   lng: number;
   detail: string;
-  picture:'';
+  picture: string;
 }
